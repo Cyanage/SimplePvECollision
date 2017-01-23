@@ -28,6 +28,8 @@ namespace SimplePvECollision
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            ColliderManager.Initialize();
         }
 
         protected override void UnloadContent()

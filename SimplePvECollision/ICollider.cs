@@ -11,8 +11,8 @@ namespace SimplePvECollision
 {
     interface ICollider
     {
-        Rectangle playerRect { get; set; }      //rectagle that is the collider of the object and the position the texture is drawn at.
-        Texture2D playerTexture { get; set; }   //texture that is drawn to the screen.
+        Rectangle objectRect { get; set; }      //rectagle that is the collider of the object and the position the texture is drawn at.
+        Texture2D objectTexture { get; set; }   //texture that is drawn to the screen.
         void Draw(SpriteBatch spriteBatch);     //Draw method so that the collider's texture is drawn to the screen.
     }
 }
