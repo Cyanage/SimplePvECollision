@@ -8,7 +8,8 @@ namespace SimplePvECollision
 {
     class ColliderManager
     {
-        public static List<ICollider> EnviromentColliderList = new List<ICollider>();
+        public static ICollider playerCollider;
+        public static List<ICollider> enviromentColliderList = new List<ICollider>();
 
         public static void Initialize() //this is static so no constructor, use this as constructor.
         {
