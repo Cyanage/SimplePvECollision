@@ -23,3 +23,5 @@ C:\Users\gabeg\Desktop\VS Projetcs\SimplePvECollision\SimplePvECollision\bin\Win
 C:\Users\gabeg\Desktop\VS Projetcs\SimplePvECollision\SimplePvECollision\obj\x86\Debug\SimplePvECollision.csprojResolveAssemblyReference.cache
 C:\Users\gabeg\Desktop\VS Projetcs\SimplePvECollision\SimplePvECollision\obj\x86\Debug\SimplePvECollision.exe
 C:\Users\gabeg\Desktop\VS Projetcs\SimplePvECollision\SimplePvECollision\obj\x86\Debug\SimplePvECollision.pdb
+C:\Users\Gabe\Documents\Visual Studio 2015\Projects\SimplePvECollision\SimplePvECollision\obj\x86\Debug\SimplePvECollision.exe
+C:\Users\Gabe\Documents\Visual Studio 2015\Projects\SimplePvECollision\SimplePvECollision\obj\x86\Debug\SimplePvECollision.pdb
