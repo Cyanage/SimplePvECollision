@@ -24,6 +24,19 @@ namespace SimplePvECollision
         {
             //moving the player by its velocity.
             playerCollider.objectRect = new Rectangle((int)(playerCollider.objectRect.X + playerVelocity.objectVelocity.X), (int)(playerCollider.objectRect.Y + playerVelocity.objectVelocity.Y), playerCollider.objectRect.Width, playerCollider.objectRect.Height);
+            Collision();
+        }
+
+        private static void Collision()
+        {
+            foreach (ICollider col in enviromentColliderList)
+            {
+                if (playerCollider.objectRect.Intersects(col.objectRect))
+                {
+                    //TODO: dev, move player by intersect vector.
+                }
+            }
+            
         }
 
         public static void Draw(SpriteBatch spriteBatch, GraphicsDeviceManager graphics) // draws all the textures in the collider lists.
