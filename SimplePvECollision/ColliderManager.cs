@@ -24,7 +24,7 @@ namespace SimplePvECollision
         {
             //moving the player by its velocity.
             playerCollider.objectRect = new Rectangle((int)(playerCollider.objectRect.X + playerVelocity.objectVelocity.X), (int)(playerCollider.objectRect.Y + playerVelocity.objectVelocity.Y), playerCollider.objectRect.Width, playerCollider.objectRect.Height);
-            Collision();
+            Collision(); //checks object collision
         }
 
         private static void Collision()
@@ -33,12 +33,39 @@ namespace SimplePvECollision
             {
                 if (playerCollider.objectRect.Intersects(col.objectRect))
                 {
-                    //TODO: dev, move player by intersect vector.
+                    if (playerCollider.objectRect.X > col.objectRect.X)
+                    {
+                        if (playerCollider.objectRect.Y > col.objectRect.Y) //Xpos goes up to push the rect away, Ypos goes up as well, X+ Y+
+                        {
+                            playerCollider.objectRect = new Rectangle(
+                                (int)(playerCollider.objectRect.X + (playerCollider.objectRect.Width - (playerCollider.objectRect.X - col.objectRect.X))), 
+                                (int)(playerCollider.objectRect.Y + (playerCollider.objectRect.Height - (playerCollider.objectRect.Y - col.objectRect.Y))), 
+                                playerCollider.objectRect.Width, 
+                                playerCollider.objectRect.Height);
+                        }
+                        else //X+ Y-
+                        {
+
+                        }
+                    }
+                    else
+                    {
+                        if (playerCollider.objectRect.Y > col.objectRect.Y) //X- Y+
+                        {
+
+                        }
+                        else //X- Y-
+                        {
+
+                        }
+
+                    }
+                    //TODO: dev, move player by intersect vector, doing now
                 }
             }
             
         }
-
+ 
         public static void Draw(SpriteBatch spriteBatch, GraphicsDeviceManager graphics) // draws all the textures in the collider lists.
         {
             spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null);//TODO: camera matrix
