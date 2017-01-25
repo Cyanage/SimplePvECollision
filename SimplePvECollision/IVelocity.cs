@@ -11,6 +11,6 @@ namespace SimplePvECollision
 {
     interface IVelocity
     {
-        Vector2 objectVelocity { get; set; } //velocity is the force and object gets added to the position each frame.
+        Vector2 ObjectVelocity { get; set; } //velocity is the force and object gets added to the position each frame.
     }
 }
