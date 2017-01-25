@@ -31,7 +31,7 @@ namespace SimplePvECollision
         {
             foreach (ICollider col in enviromentColliderList)
             {
-                if (playerCollider.objectRect.Intersects(col.objectRect))
+                if (playerCollider.objectRect.Intersects(col.objectRect)) //checks if the player is colliding with the current object in the foreach loop.
                 {
                     if (playerCollider.objectRect.X > col.objectRect.X)
                     {
@@ -45,22 +45,33 @@ namespace SimplePvECollision
                         }
                         else //X+ Y-
                         {
-
+                            playerCollider.objectRect = new Rectangle(
+                                (int)(playerCollider.objectRect.X + (playerCollider.objectRect.Width - (playerCollider.objectRect.X - col.objectRect.X))),
+                                (int)(playerCollider.objectRect.Y - (playerCollider.objectRect.Height - (playerCollider.objectRect.Y - col.objectRect.Y))),
+                                playerCollider.objectRect.Width,
+                                playerCollider.objectRect.Height);
                         }
                     }
                     else
                     {
                         if (playerCollider.objectRect.Y > col.objectRect.Y) //X- Y+
                         {
-
+                            playerCollider.objectRect = new Rectangle(
+                                (int)(playerCollider.objectRect.X - (playerCollider.objectRect.Width - (playerCollider.objectRect.X - col.objectRect.X))),
+                                (int)(playerCollider.objectRect.Y + (playerCollider.objectRect.Height - (playerCollider.objectRect.Y - col.objectRect.Y))),
+                                playerCollider.objectRect.Width,
+                                playerCollider.objectRect.Height);
                         }
                         else //X- Y-
                         {
-
+                            playerCollider.objectRect = new Rectangle(
+                                (int)(playerCollider.objectRect.X - (playerCollider.objectRect.Width - (playerCollider.objectRect.X - col.objectRect.X))),
+                                (int)(playerCollider.objectRect.Y - (playerCollider.objectRect.Height - (playerCollider.objectRect.Y - col.objectRect.Y))),
+                                playerCollider.objectRect.Width,
+                                playerCollider.objectRect.Height);
                         }
 
                     }
-                    //TODO: dev, move player by intersect vector, doing now
                 }
             }
             
