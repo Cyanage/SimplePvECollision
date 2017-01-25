@@ -13,7 +13,7 @@ namespace SimplePvECollision
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-
+            
             //Setting screen size and making the mouse pointer visible.
             IsMouseVisible = true;
             graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;

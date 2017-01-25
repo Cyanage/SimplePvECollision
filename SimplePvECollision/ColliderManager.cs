@@ -23,7 +23,7 @@ namespace SimplePvECollision
         public static void Update() //holds all the update logic.
         {
             //moving the player by its velocity.
-            playerCollider.objectRect = new Rectangle((int)(playerCollider.objectRect.X + playerVelocity.objectVelocity.X), (int)(playerCollider.objectRect.Y + playerVelocity.objectVelocity.Y), playerCollider.objectRect.Width, playerCollider.objectRect.Height);
+            playerCollider.ObjectRect = new Rectangle((int)(playerCollider.ObjectRect.X + playerVelocity.ObjectVelocity.X), (int)(playerCollider.ObjectRect.Y + playerVelocity.ObjectVelocity.Y), playerCollider.ObjectRect.Width, playerCollider.ObjectRect.Height);
             Collision(); //checks object collision
         }
 
@@ -31,50 +31,48 @@ namespace SimplePvECollision
         {
             foreach (ICollider col in enviromentColliderList)
             {
-                if (playerCollider.objectRect.Intersects(col.objectRect)) //checks if the player is colliding with the current object in the foreach loop.
+                if (playerCollider.ObjectRect.Intersects(col.ObjectRect)) //checks if the player is colliding with the current object in the foreach loop.
                 {
-                    if (playerCollider.objectRect.X > col.objectRect.X)
+                    if (playerCollider.ObjectRect.X > col.ObjectRect.X)
                     {
-                        if (playerCollider.objectRect.Y > col.objectRect.Y) //Xpos goes up to push the rect away, Ypos goes up as well, X+ Y+
+                        if (playerCollider.ObjectRect.Y > col.ObjectRect.Y) //Xpos goes up to push the rect away, Ypos goes up as well, X+ Y+
                         {
-                            playerCollider.objectRect = new Rectangle(
-                                (int)(playerCollider.objectRect.X + (playerCollider.objectRect.Width - (playerCollider.objectRect.X - col.objectRect.X))), 
-                                (int)(playerCollider.objectRect.Y + (playerCollider.objectRect.Height - (playerCollider.objectRect.Y - col.objectRect.Y))), 
-                                playerCollider.objectRect.Width, 
-                                playerCollider.objectRect.Height);
+                            playerCollider.ObjectRect = new Rectangle(
+                                (int)(playerCollider.ObjectRect.X + (playerCollider.ObjectRect.Width - (playerCollider.ObjectRect.X - col.ObjectRect.X))), 
+                                (int)(playerCollider.ObjectRect.Y + (playerCollider.ObjectRect.Height - (playerCollider.ObjectRect.Y - col.ObjectRect.Y))), 
+                                playerCollider.ObjectRect.Width, 
+                                playerCollider.ObjectRect.Height);
                         }
                         else //X+ Y-
                         {
-                            playerCollider.objectRect = new Rectangle(
-                                (int)(playerCollider.objectRect.X + (playerCollider.objectRect.Width - (playerCollider.objectRect.X - col.objectRect.X))),
-                                (int)(playerCollider.objectRect.Y - (playerCollider.objectRect.Height - (playerCollider.objectRect.Y - col.objectRect.Y))),
-                                playerCollider.objectRect.Width,
-                                playerCollider.objectRect.Height);
+                            playerCollider.ObjectRect = new Rectangle(
+                                (int)(playerCollider.ObjectRect.X + (playerCollider.ObjectRect.Width - (playerCollider.ObjectRect.X - col.ObjectRect.X))),
+                                (int)(playerCollider.ObjectRect.Y - (playerCollider.ObjectRect.Height - (playerCollider.ObjectRect.Y - col.ObjectRect.Y))),
+                                playerCollider.ObjectRect.Width,
+                                playerCollider.ObjectRect.Height);
                         }
                     }
                     else
                     {
-                        if (playerCollider.objectRect.Y > col.objectRect.Y) //X- Y+
+                        if (playerCollider.ObjectRect.Y > col.ObjectRect.Y) //X- Y+
                         {
-                            playerCollider.objectRect = new Rectangle(
-                                (int)(playerCollider.objectRect.X - (playerCollider.objectRect.Width - (playerCollider.objectRect.X - col.objectRect.X))),
-                                (int)(playerCollider.objectRect.Y + (playerCollider.objectRect.Height - (playerCollider.objectRect.Y - col.objectRect.Y))),
-                                playerCollider.objectRect.Width,
-                                playerCollider.objectRect.Height);
+                            playerCollider.ObjectRect = new Rectangle(
+                                (int)(playerCollider.ObjectRect.X - (playerCollider.ObjectRect.Width - (playerCollider.ObjectRect.X - col.ObjectRect.X))),
+                                (int)(playerCollider.ObjectRect.Y + (playerCollider.ObjectRect.Height - (playerCollider.ObjectRect.Y - col.ObjectRect.Y))),
+                                playerCollider.ObjectRect.Width,
+                                playerCollider.ObjectRect.Height);
                         }
                         else //X- Y-
                         {
-                            playerCollider.objectRect = new Rectangle(
-                                (int)(playerCollider.objectRect.X - (playerCollider.objectRect.Width - (playerCollider.objectRect.X - col.objectRect.X))),
-                                (int)(playerCollider.objectRect.Y - (playerCollider.objectRect.Height - (playerCollider.objectRect.Y - col.objectRect.Y))),
-                                playerCollider.objectRect.Width,
-                                playerCollider.objectRect.Height);
+                            playerCollider.ObjectRect = new Rectangle(
+                                (int)(playerCollider.ObjectRect.X - (playerCollider.ObjectRect.Width - (playerCollider.ObjectRect.X - col.ObjectRect.X))),
+                                (int)(playerCollider.ObjectRect.Y - (playerCollider.ObjectRect.Height - (playerCollider.ObjectRect.Y - col.ObjectRect.Y))),
+                                playerCollider.ObjectRect.Width,
+                                playerCollider.ObjectRect.Height);
                         }
-
                     }
                 }
             }
-            
         }
  
         public static void Draw(SpriteBatch spriteBatch, GraphicsDeviceManager graphics) // draws all the textures in the collider lists.
@@ -82,12 +80,10 @@ namespace SimplePvECollision
             spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null);//TODO: camera matrix
             foreach (ICollider col in enviromentColliderList)
             {
-                spriteBatch.Draw(col.objectTexture, col.objectRect, Color.White); //draw all collider classes in enviroment list.
+                spriteBatch.Draw(col.ObjectTexture, col.ObjectRect, Color.White); //draw all collider classes in enviroment list.
             }
-            spriteBatch.Draw(playerCollider.objectTexture, playerCollider.objectRect, Color.White); //draw player
+            spriteBatch.Draw(playerCollider.ObjectTexture, playerCollider.ObjectRect, Color.White); //draw player
             spriteBatch.End();
         }
-
-
     }
 }
