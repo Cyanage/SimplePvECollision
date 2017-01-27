@@ -15,8 +15,11 @@ namespace SimplePvECollision
         public static IVelocity playerVelocity; //the velocity of the player, add the moving player object to these two variables.
         public static List<ICollider> enviromentColliderList = new List<ICollider>();   //list that hold all the colliders that are part of the enviroment.  Add non-moving collider classes to this. 
 
-        public static void Initialize() //this is static so no constructor, use this as constructor.
+        public static void Initialize(Character character) //this is static so no constructor, use this as constructor.
         {
+            enviromentColliderList = Enviroment.colliderList; //setting enviroment
+            playerCollider = character; //setting player
+            playerVelocity = character;
             //TODO: add classes that inherit ICollider to playerCollider and envoromentColliderList.
         }
 
@@ -75,7 +78,7 @@ namespace SimplePvECollision
             }
         }
  
-        public static void Draw(SpriteBatch spriteBatch, GraphicsDeviceManager graphics) // draws all the textures in the collider lists.
+        public static void Draw(SpriteBatch spriteBatch) // draws all the textures in the collider lists.
         {
             spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null);//TODO: camera matrix
             foreach (ICollider col in enviromentColliderList)

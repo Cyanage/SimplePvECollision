@@ -7,12 +7,11 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-
 namespace SimplePvECollision
 {
-    class Character : ICollider, IVelocity
+    class StaticObject : ICollider
     {
-        public Character(Texture2D texture, Rectangle rectangle)
+        public StaticObject(Texture2D texture, Rectangle rectangle)
         {
             objectTexture = texture; //sets the texture of the object
             objectRect = rectangle; //sets the size and position of the object
@@ -30,24 +29,12 @@ namespace SimplePvECollision
         public Texture2D ObjectTexture
         {
             get { return objectTexture; }
-            set { objectTexture = value;  }
+            set { objectTexture = value; }
         }
 
-        private Vector2 objectVelocity; //holds the velocity value
-        public Vector2 ObjectVelocity
-        {
-            get { return objectVelocity; }
-            set { objectVelocity = value; }
-        }
-
-        public void Draw(SpriteBatch spriteBatch) //draw the character
+        public void Draw(SpriteBatch spriteBatch) //draws the texture
         {
             spriteBatch.Draw(objectTexture, objectRect, Color.White);
-        }
-
-        public void Update()
-        {
-            //TODO: add movement logic here, call this in game1.
         }
     }
 }
