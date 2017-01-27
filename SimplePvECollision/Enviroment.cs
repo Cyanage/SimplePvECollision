@@ -17,8 +17,8 @@ namespace SimplePvECollision
             colliderList = new List<ICollider>();
             colliderList.Add(new StaticObject(tex, new Rectangle(64 * 2, 0, 64, 64)));
             colliderList.Add(new StaticObject(tex, new Rectangle(64 * 2, 64, 64, 64)));
-            colliderList.Add(new StaticObject(tex, new Rectangle(64 * 2, 96, 64, 64)));
             colliderList.Add(new StaticObject(tex, new Rectangle(64 * 2, 128, 64, 64)));
+            colliderList.Add(new StaticObject(tex, new Rectangle(64 * 2, 192, 64, 64)));
         }
     }
 }
