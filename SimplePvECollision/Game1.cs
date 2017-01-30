@@ -11,6 +11,8 @@ namespace SimplePvECollision
         Enviroment enviroment;
         Character character;
 
+        
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -32,7 +34,7 @@ namespace SimplePvECollision
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             enviroment = new Enviroment(Content.Load<Texture2D>("Grass"));//adds texture to enviroment objects
-            character = new Character(Content.Load<Texture2D>("Char v1"), new Rectangle(0, 0, 64, 64)); //adds texture and rectangle to character.
+            character = new Character(Content.Load<Texture2D>("Char v1"), new Rectangle(0, 0, 54, 64), new Point(64, 64)); //adds texture and rectangle to character.
             ColliderManager.Initialize(character);
         }
 

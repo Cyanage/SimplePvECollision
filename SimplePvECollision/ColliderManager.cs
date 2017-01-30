@@ -43,38 +43,40 @@ namespace SimplePvECollision
                         {
                             if ((col.ObjectRect.Width - (playerCollider.ObjectRect.X - col.ObjectRect.X)) < (col.ObjectRect.Height - (playerCollider.ObjectRect.Y - col.ObjectRect.Y))) //Checks which direction to push the character
                             {
-                                Console.WriteLine("1");
                                 playerCollider.ObjectRect = new Rectangle(playerCollider.ObjectRect.X + (col.ObjectRect.Width - (playerCollider.ObjectRect.X - col.ObjectRect.X)), 
                                                                           playerCollider.ObjectRect.Y, 
                                                                           playerCollider.ObjectRect.Width, 
                                                                           playerCollider.ObjectRect.Height);
+                                playerVelocity.ObjectVelocity = new Vector2(0, playerVelocity.ObjectVelocity.Y); //when the player hits an object velocity disapears in one axis
                             }
                             else
                             {
-                                Console.WriteLine("2");
                                 playerCollider.ObjectRect = new Rectangle(playerCollider.ObjectRect.X, 
                                                                           playerCollider.ObjectRect.Y + (col.ObjectRect.Height - (playerCollider.ObjectRect.Y - col.ObjectRect.Y)), 
                                                                           playerCollider.ObjectRect.Width, 
                                                                           playerCollider.ObjectRect.Height);
-                            } 
+                                playerVelocity.ObjectVelocity = new Vector2(playerVelocity.ObjectVelocity.X, 0); //when the player hits an object velocity disapears in one axis
+
+                            }
                         }
                         else
                         {
                             if ((col.ObjectRect.Width - (playerCollider.ObjectRect.X - col.ObjectRect.X)) < (playerCollider.ObjectRect.Height + (playerCollider.ObjectRect.Y - col.ObjectRect.Y))) //Checks which direction to push the character
                             {
-                                Console.WriteLine("3");
                                 playerCollider.ObjectRect = new Rectangle(playerCollider.ObjectRect.X + (col.ObjectRect.Width - (playerCollider.ObjectRect.X - col.ObjectRect.X)),
                                                                           playerCollider.ObjectRect.Y,
                                                                           playerCollider.ObjectRect.Width,
                                                                           playerCollider.ObjectRect.Height);
+                                playerVelocity.ObjectVelocity = new Vector2(0, playerVelocity.ObjectVelocity.Y); //when the player hits an object velocity disapears in one axis
                             }
                             else
                             {
-                                Console.WriteLine("4");
                                 playerCollider.ObjectRect = new Rectangle(playerCollider.ObjectRect.X,
                                                                           playerCollider.ObjectRect.Y - (playerCollider.ObjectRect.Height + (playerCollider.ObjectRect.Y - col.ObjectRect.Y)),
                                                                           playerCollider.ObjectRect.Width,
                                                                           playerCollider.ObjectRect.Height);
+                                playerVelocity.ObjectVelocity = new Vector2(playerVelocity.ObjectVelocity.X, 0); //when the player hits an object velocity disapears in one axis
+
                             }
                         }
                     }
@@ -84,38 +86,38 @@ namespace SimplePvECollision
                         {
                             if ((playerCollider.ObjectRect.Width + (playerCollider.ObjectRect.X - col.ObjectRect.X)) < (col.ObjectRect.Height - (playerCollider.ObjectRect.Y - col.ObjectRect.Y))) //Checks which direction to push the character
                             {
-                                Console.WriteLine("5");
                                 playerCollider.ObjectRect = new Rectangle(playerCollider.ObjectRect.X - (playerCollider.ObjectRect.Width + (playerCollider.ObjectRect.X - col.ObjectRect.X)),
                                                                           playerCollider.ObjectRect.Y,
                                                                           playerCollider.ObjectRect.Width,
                                                                           playerCollider.ObjectRect.Height);
+                                playerVelocity.ObjectVelocity = new Vector2(0, playerVelocity.ObjectVelocity.Y); //when the player hits an object velocity disapears in one axis
                             }
                             else
                             {
-                                Console.WriteLine("6");
                                 playerCollider.ObjectRect = new Rectangle(playerCollider.ObjectRect.X,
                                                                           playerCollider.ObjectRect.Y + (col.ObjectRect.Height - (playerCollider.ObjectRect.Y - col.ObjectRect.Y)),
                                                                           playerCollider.ObjectRect.Width,
                                                                           playerCollider.ObjectRect.Height);
+                                playerVelocity.ObjectVelocity = new Vector2(playerVelocity.ObjectVelocity.X, 0); //when the player hits an object velocity disapears in one axis
                             }
                         }
                         else
                         {
                             if((playerCollider.ObjectRect.Width + (playerCollider.ObjectRect.X - col.ObjectRect.X)) < (playerCollider.ObjectRect.Height + (playerCollider.ObjectRect.Y - col.ObjectRect.Y))) //Checks which direction to push the character
                             {
-                                Console.WriteLine("7");
                                 playerCollider.ObjectRect = new Rectangle(playerCollider.ObjectRect.X - (playerCollider.ObjectRect.Width + (playerCollider.ObjectRect.X - col.ObjectRect.X)),
                                                                           playerCollider.ObjectRect.Y,
                                                                           playerCollider.ObjectRect.Width,
                                                                           playerCollider.ObjectRect.Height);
+                                playerVelocity.ObjectVelocity = new Vector2(0, playerVelocity.ObjectVelocity.Y); //when the player hits an object velocity disapears in one axis
                             }
                             else
                             {
-                                Console.WriteLine("8");
                                 playerCollider.ObjectRect = new Rectangle(playerCollider.ObjectRect.X,
                                                                           playerCollider.ObjectRect.Y - (playerCollider.ObjectRect.Height + (playerCollider.ObjectRect.Y - col.ObjectRect.Y)),
                                                                           playerCollider.ObjectRect.Width,
                                                                           playerCollider.ObjectRect.Height);
+                                playerVelocity.ObjectVelocity = new Vector2(playerVelocity.ObjectVelocity.X, 0); //when the player hits an object velocity disapears in one axis
                             }
                         }
                     }
@@ -128,52 +130,10 @@ namespace SimplePvECollision
             spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null);//TODO: camera matrix
             foreach (ICollider col in enviromentColliderList)
             {
-                spriteBatch.Draw(col.ObjectTexture, col.ObjectRect, Color.White); //draw all collider classes in enviroment list.
+                col.Draw(spriteBatch); //draw all collider classes in enviroment list.
             }
-            spriteBatch.Draw(playerCollider.ObjectTexture, playerCollider.ObjectRect, Color.White); //draw player
+            playerCollider.Draw(spriteBatch);  //draw player
             spriteBatch.End();
         }
     }
 }
-
-//                    if (playerCollider.ObjectRect.X > col.ObjectRect.X)
-//                    {
-//                        if (playerCollider.ObjectRect.Y > col.ObjectRect.Y) //Xpos goes up to push the rect away, Ypos goes up as well, X+ Y+
-//                        {
-//                            Console.WriteLine(playerCollider.ObjectRect + " : Object Rect size 1");
-//                            Console.WriteLine("Calculations : " + playerCollider.ObjectRect.X + " + (" + col.ObjectRect.Width + " - (" + playerCollider.ObjectRect.X + " - " + col.ObjectRect.X + ")) == " + (playerCollider.ObjectRect.X + (col.ObjectRect.Width - (playerCollider.ObjectRect.X - col.ObjectRect.X))));
-//                            playerCollider.ObjectRect = new Rectangle(
-//                                (playerCollider.ObjectRect.X + (col.ObjectRect.Width - (playerCollider.ObjectRect.X - col.ObjectRect.X))), 
-//                                (playerCollider.ObjectRect.Y + (col.ObjectRect.Height - (playerCollider.ObjectRect.Y - col.ObjectRect.Y))), 
-//                                playerCollider.ObjectRect.Width, 
-//                                playerCollider.ObjectRect.Height);
-//                            Console.WriteLine(playerCollider.ObjectRect + " : Object Rect size 2");
-//                        }
-//                        else //X+ Y-
-//                        {
-//                            playerCollider.ObjectRect = new Rectangle(
-//                                (int)(playerCollider.ObjectRect.X + (playerCollider.ObjectRect.Width - (playerCollider.ObjectRect.X - col.ObjectRect.X))),
-//                                (int)(playerCollider.ObjectRect.Y - (playerCollider.ObjectRect.Height - (playerCollider.ObjectRect.Y - col.ObjectRect.Y))),
-//                                playerCollider.ObjectRect.Width,
-//                                playerCollider.ObjectRect.Height);
-//                        }
-//                    }
-//                    else
-//                    {
-//                        if (playerCollider.ObjectRect.Y > col.ObjectRect.Y) //X- Y+
-//                        {
-//                            playerCollider.ObjectRect = new Rectangle(
-//                                (int)(playerCollider.ObjectRect.X - (playerCollider.ObjectRect.Width - (playerCollider.ObjectRect.X - col.ObjectRect.X))),
-//                                (int)(playerCollider.ObjectRect.Y - (playerCollider.ObjectRect.Height - (playerCollider.ObjectRect.Y - col.ObjectRect.Y))),
-//                                playerCollider.ObjectRect.Width,
-//                                playerCollider.ObjectRect.Height);
-//                        }
-//                        else //X- Y-
-//                        {
-//                            playerCollider.ObjectRect = new Rectangle(
-//                                (int)(playerCollider.ObjectRect.X - (playerCollider.ObjectRect.Width - (playerCollider.ObjectRect.X - col.ObjectRect.X))),
-//                                (int)(playerCollider.ObjectRect.Y + (playerCollider.ObjectRect.Height - (playerCollider.ObjectRect.Y - col.ObjectRect.Y))),
-//                                playerCollider.ObjectRect.Width,
-//                                playerCollider.ObjectRect.Height);
-//                        }
-//                    }

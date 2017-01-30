@@ -13,6 +13,7 @@ namespace SimplePvECollision
     {
         Rectangle ObjectRect { get; set; }      //rectagle that is the collider of the object and the position the texture is drawn at.
         Texture2D ObjectTexture { get; set; }   //texture that is drawn to the screen.
+        Point TextureSize { get; set; }       //size of texture
         void Draw(SpriteBatch spriteBatch);     //Draw method so that the collider's texture is drawn to the screen.
     }
 }
