@@ -49,25 +49,24 @@ namespace SimplePvECollision
         {
             if (Keyboard.GetState().IsKeyDown(Keys.W))
             {
-                objectVelocity = new Vector2(objectVelocity.X, -8);
+                objectVelocity = new Vector2(0, -8);
             }
             else if (Keyboard.GetState().IsKeyDown(Keys.A))
             {
-                objectVelocity = new Vector2(-8, objectVelocity.Y);
+                objectVelocity = new Vector2(-8, 0);
             }
             else if (Keyboard.GetState().IsKeyDown(Keys.S))
             {
-                objectVelocity = new Vector2(objectVelocity.X, 8);
+                objectVelocity = new Vector2(0, 8);
             }
             else if (Keyboard.GetState().IsKeyDown(Keys.D))
             {
-                objectVelocity = new Vector2(8, objectVelocity.Y);
+                objectVelocity = new Vector2(8, 0);
             }
             else
             {
                 objectVelocity = new Vector2(0, 0);
             }
-            //TODO: add movement logic here.
         }
     }
 }

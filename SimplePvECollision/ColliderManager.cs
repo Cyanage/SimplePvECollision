@@ -36,42 +36,87 @@ namespace SimplePvECollision
             {
                 if (playerCollider.ObjectRect.Intersects(col.ObjectRect)) //checks if the player is colliding with the current object in the foreach loop.
                 {
-                    if (playerCollider.ObjectRect.X > col.ObjectRect.X)
+                    //TODO: add distance checker
+                    if (playerCollider.ObjectRect.X > col.ObjectRect.X) //finds what side of the wall the player is on
                     {
-                        if (playerCollider.ObjectRect.Y > col.ObjectRect.Y) //Xpos goes up to push the rect away, Ypos goes up as well, X+ Y+
+                        if (playerCollider.ObjectRect.Y > col.ObjectRect.Y) //ditto
                         {
-                            playerCollider.ObjectRect = new Rectangle(
-                                (int)(playerCollider.ObjectRect.X + (playerCollider.ObjectRect.Width - (playerCollider.ObjectRect.X - col.ObjectRect.X))), 
-                                (int)(playerCollider.ObjectRect.Y + (playerCollider.ObjectRect.Height - (playerCollider.ObjectRect.Y - col.ObjectRect.Y))), 
-                                playerCollider.ObjectRect.Width, 
-                                playerCollider.ObjectRect.Height);
+                            if ((col.ObjectRect.Width - (playerCollider.ObjectRect.X - col.ObjectRect.X)) < (col.ObjectRect.Height - (playerCollider.ObjectRect.Y - col.ObjectRect.Y))) //Checks which direction to push the character
+                            {
+                                Console.WriteLine("1");
+                                playerCollider.ObjectRect = new Rectangle(playerCollider.ObjectRect.X + (col.ObjectRect.Width - (playerCollider.ObjectRect.X - col.ObjectRect.X)), 
+                                                                          playerCollider.ObjectRect.Y, 
+                                                                          playerCollider.ObjectRect.Width, 
+                                                                          playerCollider.ObjectRect.Height);
+                            }
+                            else
+                            {
+                                Console.WriteLine("2");
+                                playerCollider.ObjectRect = new Rectangle(playerCollider.ObjectRect.X, 
+                                                                          playerCollider.ObjectRect.Y + (col.ObjectRect.Height - (playerCollider.ObjectRect.Y - col.ObjectRect.Y)), 
+                                                                          playerCollider.ObjectRect.Width, 
+                                                                          playerCollider.ObjectRect.Height);
+                            } 
                         }
-                        else //X+ Y-
+                        else
                         {
-                            playerCollider.ObjectRect = new Rectangle(
-                                (int)(playerCollider.ObjectRect.X + (playerCollider.ObjectRect.Width - (playerCollider.ObjectRect.X - col.ObjectRect.X))),
-                                (int)(playerCollider.ObjectRect.Y - (playerCollider.ObjectRect.Height - (playerCollider.ObjectRect.Y - col.ObjectRect.Y))),
-                                playerCollider.ObjectRect.Width,
-                                playerCollider.ObjectRect.Height);
+                            if ((col.ObjectRect.Width - (playerCollider.ObjectRect.X - col.ObjectRect.X)) < (playerCollider.ObjectRect.Height + (playerCollider.ObjectRect.Y - col.ObjectRect.Y))) //Checks which direction to push the character
+                            {
+                                Console.WriteLine("3");
+                                playerCollider.ObjectRect = new Rectangle(playerCollider.ObjectRect.X + (col.ObjectRect.Width - (playerCollider.ObjectRect.X - col.ObjectRect.X)),
+                                                                          playerCollider.ObjectRect.Y,
+                                                                          playerCollider.ObjectRect.Width,
+                                                                          playerCollider.ObjectRect.Height);
+                            }
+                            else
+                            {
+                                Console.WriteLine("4");
+                                playerCollider.ObjectRect = new Rectangle(playerCollider.ObjectRect.X,
+                                                                          playerCollider.ObjectRect.Y - (playerCollider.ObjectRect.Height + (playerCollider.ObjectRect.Y - col.ObjectRect.Y)),
+                                                                          playerCollider.ObjectRect.Width,
+                                                                          playerCollider.ObjectRect.Height);
+                            }
                         }
                     }
                     else
                     {
-                        if (playerCollider.ObjectRect.Y > col.ObjectRect.Y) //X- Y+
+                        if (playerCollider.ObjectRect.Y > col.ObjectRect.Y)
                         {
-                            playerCollider.ObjectRect = new Rectangle(
-                                (int)(playerCollider.ObjectRect.X - (playerCollider.ObjectRect.Width - (playerCollider.ObjectRect.X - col.ObjectRect.X))),
-                                (int)(playerCollider.ObjectRect.Y + (playerCollider.ObjectRect.Height - (playerCollider.ObjectRect.Y - col.ObjectRect.Y))),
-                                playerCollider.ObjectRect.Width,
-                                playerCollider.ObjectRect.Height);
+                            if ((playerCollider.ObjectRect.Width + (playerCollider.ObjectRect.X - col.ObjectRect.X)) < (col.ObjectRect.Height - (playerCollider.ObjectRect.Y - col.ObjectRect.Y))) //Checks which direction to push the character
+                            {
+                                Console.WriteLine("5");
+                                playerCollider.ObjectRect = new Rectangle(playerCollider.ObjectRect.X - (playerCollider.ObjectRect.Width + (playerCollider.ObjectRect.X - col.ObjectRect.X)),
+                                                                          playerCollider.ObjectRect.Y,
+                                                                          playerCollider.ObjectRect.Width,
+                                                                          playerCollider.ObjectRect.Height);
+                            }
+                            else
+                            {
+                                Console.WriteLine("6");
+                                playerCollider.ObjectRect = new Rectangle(playerCollider.ObjectRect.X,
+                                                                          playerCollider.ObjectRect.Y + (col.ObjectRect.Height - (playerCollider.ObjectRect.Y - col.ObjectRect.Y)),
+                                                                          playerCollider.ObjectRect.Width,
+                                                                          playerCollider.ObjectRect.Height);
+                            }
                         }
-                        else //X- Y-
+                        else
                         {
-                            playerCollider.ObjectRect = new Rectangle(
-                                (int)(playerCollider.ObjectRect.X - (playerCollider.ObjectRect.Width - (playerCollider.ObjectRect.X - col.ObjectRect.X))),
-                                (int)(playerCollider.ObjectRect.Y - (playerCollider.ObjectRect.Height - (playerCollider.ObjectRect.Y - col.ObjectRect.Y))),
-                                playerCollider.ObjectRect.Width,
-                                playerCollider.ObjectRect.Height);
+                            if((playerCollider.ObjectRect.Width + (playerCollider.ObjectRect.X - col.ObjectRect.X)) < (playerCollider.ObjectRect.Height + (playerCollider.ObjectRect.Y - col.ObjectRect.Y))) //Checks which direction to push the character
+                            {
+                                Console.WriteLine("7");
+                                playerCollider.ObjectRect = new Rectangle(playerCollider.ObjectRect.X - (playerCollider.ObjectRect.Width + (playerCollider.ObjectRect.X - col.ObjectRect.X)),
+                                                                          playerCollider.ObjectRect.Y,
+                                                                          playerCollider.ObjectRect.Width,
+                                                                          playerCollider.ObjectRect.Height);
+                            }
+                            else
+                            {
+                                Console.WriteLine("8");
+                                playerCollider.ObjectRect = new Rectangle(playerCollider.ObjectRect.X,
+                                                                          playerCollider.ObjectRect.Y - (playerCollider.ObjectRect.Height + (playerCollider.ObjectRect.Y - col.ObjectRect.Y)),
+                                                                          playerCollider.ObjectRect.Width,
+                                                                          playerCollider.ObjectRect.Height);
+                            }
                         }
                     }
                 }
@@ -90,3 +135,45 @@ namespace SimplePvECollision
         }
     }
 }
+
+//                    if (playerCollider.ObjectRect.X > col.ObjectRect.X)
+//                    {
+//                        if (playerCollider.ObjectRect.Y > col.ObjectRect.Y) //Xpos goes up to push the rect away, Ypos goes up as well, X+ Y+
+//                        {
+//                            Console.WriteLine(playerCollider.ObjectRect + " : Object Rect size 1");
+//                            Console.WriteLine("Calculations : " + playerCollider.ObjectRect.X + " + (" + col.ObjectRect.Width + " - (" + playerCollider.ObjectRect.X + " - " + col.ObjectRect.X + ")) == " + (playerCollider.ObjectRect.X + (col.ObjectRect.Width - (playerCollider.ObjectRect.X - col.ObjectRect.X))));
+//                            playerCollider.ObjectRect = new Rectangle(
+//                                (playerCollider.ObjectRect.X + (col.ObjectRect.Width - (playerCollider.ObjectRect.X - col.ObjectRect.X))), 
+//                                (playerCollider.ObjectRect.Y + (col.ObjectRect.Height - (playerCollider.ObjectRect.Y - col.ObjectRect.Y))), 
+//                                playerCollider.ObjectRect.Width, 
+//                                playerCollider.ObjectRect.Height);
+//                            Console.WriteLine(playerCollider.ObjectRect + " : Object Rect size 2");
+//                        }
+//                        else //X+ Y-
+//                        {
+//                            playerCollider.ObjectRect = new Rectangle(
+//                                (int)(playerCollider.ObjectRect.X + (playerCollider.ObjectRect.Width - (playerCollider.ObjectRect.X - col.ObjectRect.X))),
+//                                (int)(playerCollider.ObjectRect.Y - (playerCollider.ObjectRect.Height - (playerCollider.ObjectRect.Y - col.ObjectRect.Y))),
+//                                playerCollider.ObjectRect.Width,
+//                                playerCollider.ObjectRect.Height);
+//                        }
+//                    }
+//                    else
+//                    {
+//                        if (playerCollider.ObjectRect.Y > col.ObjectRect.Y) //X- Y+
+//                        {
+//                            playerCollider.ObjectRect = new Rectangle(
+//                                (int)(playerCollider.ObjectRect.X - (playerCollider.ObjectRect.Width - (playerCollider.ObjectRect.X - col.ObjectRect.X))),
+//                                (int)(playerCollider.ObjectRect.Y - (playerCollider.ObjectRect.Height - (playerCollider.ObjectRect.Y - col.ObjectRect.Y))),
+//                                playerCollider.ObjectRect.Width,
+//                                playerCollider.ObjectRect.Height);
+//                        }
+//                        else //X- Y-
+//                        {
+//                            playerCollider.ObjectRect = new Rectangle(
+//                                (int)(playerCollider.ObjectRect.X - (playerCollider.ObjectRect.Width - (playerCollider.ObjectRect.X - col.ObjectRect.X))),
+//                                (int)(playerCollider.ObjectRect.Y + (playerCollider.ObjectRect.Height - (playerCollider.ObjectRect.Y - col.ObjectRect.Y))),
+//                                playerCollider.ObjectRect.Width,
+//                                playerCollider.ObjectRect.Height);
+//                        }
+//                    }

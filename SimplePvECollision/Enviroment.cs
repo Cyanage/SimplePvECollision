@@ -15,10 +15,9 @@ namespace SimplePvECollision
         public Enviroment(Texture2D tex)
         {
             colliderList = new List<ICollider>();
-            colliderList.Add(new StaticObject(tex, new Rectangle(64 * 2, 0, 64, 64)));
-            colliderList.Add(new StaticObject(tex, new Rectangle(64 * 2, 64, 64, 64)));
-            colliderList.Add(new StaticObject(tex, new Rectangle(64 * 2, 128, 64, 64)));
-            colliderList.Add(new StaticObject(tex, new Rectangle(64 * 2, 192, 64, 64)));
+            colliderList.Add(new StaticObject(tex, new Rectangle(64 * 2, 64 * 4, 64, 64)));
+            colliderList.Add(new StaticObject(tex, new Rectangle(64 * 3, 64, 64, 64)));
+            colliderList.Add(new StaticObject(tex, new Rectangle(64 * 4, 128, 64, 128)));
         }
     }
 }

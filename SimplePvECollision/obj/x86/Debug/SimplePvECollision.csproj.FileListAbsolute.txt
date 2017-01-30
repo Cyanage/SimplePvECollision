@@ -50,3 +50,5 @@ C:\Users\Gabe\Documents\Visual Studio 2015\Projects\SimplePvECollision\SimplePvE
 C:\Users\Gabe\Documents\Visual Studio 2015\Projects\SimplePvECollision\SimplePvECollision\obj\x86\Debug\SimplePvECollision.csprojResolveAssemblyReference.cache
 C:\Users\Gabe\Documents\Visual Studio 2015\Projects\SimplePvECollision\SimplePvECollision\bin\Windows\x86\Debug\Content\Char v1.xnb
 C:\Users\Gabe\Documents\Visual Studio 2015\Projects\SimplePvECollision\SimplePvECollision\bin\Windows\x86\Debug\Content\Grass.xnb
+C:\Users\gabeg\Desktop\VS Projetcs\SimplePvECollision\SimplePvECollision\bin\Windows\x86\Debug\Content\Char v1.xnb
+C:\Users\gabeg\Desktop\VS Projetcs\SimplePvECollision\SimplePvECollision\bin\Windows\x86\Debug\Content\Grass.xnb
