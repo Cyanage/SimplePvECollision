@@ -127,7 +127,7 @@ namespace SimplePvECollision
  
         public static void Draw(SpriteBatch spriteBatch) // draws all the textures in the collider lists.
         {
-            spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Matrix.CreateTranslation(playerCollider.ObjectRect.X, playerCollider.ObjectRect.Y, 0)); //camera values are in backwards on purpose.
+            spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Matrix.CreateTranslation(-playerCollider.ObjectRect.X + 320, -playerCollider.ObjectRect.Y + 256, 0)); //camera values are in backwards on purpose.
             foreach (ICollider col in enviromentColliderList)
             {
                 col.Draw(spriteBatch); //draw all collider classes in enviroment list.
