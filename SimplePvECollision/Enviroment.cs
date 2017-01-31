@@ -12,15 +12,16 @@ namespace SimplePvECollision
     class Enviroment
     {
         public static List<ICollider> colliderList;
-        public Enviroment(Texture2D tex)
+        public Enviroment(Texture2D tex, Texture2D tex2)
         {
             colliderList = new List<ICollider>();
-            colliderList.Add(new StaticObject(tex, new Rectangle(64 * 2, 64 * 4, 64 * 4, 64), new Point(4, 1), new Point(64, 64)));
-            colliderList.Add(new StaticObject(tex, new Rectangle(64 * 3, 64, 64 * 2, 64), new Point(2, 1), new Point(64, 64)));
-            colliderList.Add(new StaticObject(tex, new Rectangle(0, 64 * 8, 64 * 24, 64), new Point(24, 1), new Point(64, 64)));
-            colliderList.Add(new StaticObject(tex, new Rectangle(64 * 10, 64 * 6, 64 * 12, 64), new Point(12, 1), new Point(64, 64)));
-            colliderList.Add(new StaticObject(tex, new Rectangle(0, -64, 64 * 24, 64), new Point(0, 0), new Point(64, 64))); // two zeros in tile axis varibale means don't draw it.
-            colliderList.Add(new StaticObject(tex, new Rectangle(-64, 0, 64, 64 * 8), new Point(0, 0), new Point(64, 64))); // two zeros in tile axis varibale means don't draw it.
+            colliderList.Add(new StaticObject(tex, new Rectangle(64 * 2, 64 * 4, 64 * 4, 64), new Point(4, 1), new Point(64, 64), Point.Zero));
+            colliderList.Add(new StaticObject(tex, new Rectangle(64 * 3, 64, 64 * 2, 64), new Point(2, 1), new Point(64, 64), Point.Zero));
+            colliderList.Add(new StaticObject(tex, new Rectangle(0, 64 * 8, 64 * 24, 64), new Point(24, 1), new Point(64, 64), Point.Zero));
+            colliderList.Add(new StaticObject(tex, new Rectangle(64 * 10, 64 * 6, 64 * 12, 64), new Point(12, 1), new Point(64, 64), Point.Zero));
+            colliderList.Add(new StaticObject(tex2, new Rectangle(64 * 15, 64 * 5 + 22, 64 * 6, 38), new Point(6, 1), new Point(64, 64), new Point(0, -22)));
+            colliderList.Add(new StaticObject(tex, new Rectangle(0, -64, 64 * 24, 64), new Point(0, 0), new Point(64, 64), Point.Zero)); // two zeros in tile axis varibale means don't draw it.
+            colliderList.Add(new StaticObject(tex, new Rectangle(-64, 0, 64, 64 * 8), new Point(0, 0), new Point(64, 64), Point.Zero)); // two zeros in tile axis varibale means don't draw it.
         }
     }
 }

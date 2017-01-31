@@ -33,7 +33,7 @@ namespace SimplePvECollision
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            enviroment = new Enviroment(Content.Load<Texture2D>("Grass"));//adds texture to enviroment objects
+            enviroment = new Enviroment(Content.Load<Texture2D>("Grass"), Content.Load<Texture2D>("RockWall"));//adds textures to enviroment objects
             character = new Character(Content.Load<Texture2D>("Char v1"), new Rectangle(0, 0, 54, 64), new Point(64, 64)); //adds texture and rectangle to character.
             ColliderManager.Initialize(character);
         }

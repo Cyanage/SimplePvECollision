@@ -12,8 +12,10 @@ namespace SimplePvECollision
     class StaticObject : ICollider
     {
         private Point tileAxis; //tiling is making one large sqaure out of many small square textures.
-        public StaticObject(Texture2D texture, Rectangle rectangle, Point tileAxis, Point textureSize)
+        private Point offSet; //texture offset from collider.
+        public StaticObject(Texture2D texture, Rectangle rectangle, Point tileAxis, Point textureSize, Point offSet)
         {
+            this.offSet = offSet;
             objectTexture = texture; //sets the texture of the object
             objectRect = rectangle; //sets the size and position of the object
             this.tileAxis = tileAxis; //sets the amount of tiles the object has
@@ -48,7 +50,7 @@ namespace SimplePvECollision
             {
                 for (int i2 = 0; i2 < tileAxis.Y; i2++)
                 {
-                    spriteBatch.Draw(objectTexture, new Rectangle(objectRect.X + i * 64, objectRect.Y + i2 * 64, 64, 64), Color.White);
+                    spriteBatch.Draw(objectTexture, new Rectangle(objectRect.X + i * 64 + offSet.X, objectRect.Y + i2 * 64 + offSet.Y, textureSize.X, textureSize.Y), Color.White);
                 }
             }
 

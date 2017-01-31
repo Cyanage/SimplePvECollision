@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/gabeg/Desktop/VS Projetcs/SimplePvECollision/SimplePvECollision/Content/Char v1.png</SourceFile>
-  <SourceTime>2017-01-30T23:32:00.2566693-08:00</SourceTime>
-  <DestFile>C:/Users/gabeg/Desktop/VS Projetcs/SimplePvECollision/SimplePvECollision/Content/bin/Windows/Char v1.xnb</DestFile>
-  <DestTime>2017-01-30T23:33:58.2510282-08:00</DestTime>
+  <SourceFile>C:/Users/gabeg/Desktop/VS Projetcs/SimplePvECollision/SimplePvECollision/Content/RockWall.png</SourceFile>
+  <SourceTime>2017-01-30T23:30:26.8160051-08:00</SourceTime>
+  <DestFile>C:/Users/gabeg/Desktop/VS Projetcs/SimplePvECollision/SimplePvECollision/Content/bin/Windows/RockWall.xnb</DestFile>
+  <DestTime>2017-01-30T23:33:58.2540362-08:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2016-03-29T23:36:08-07:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
