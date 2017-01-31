@@ -16,8 +16,8 @@ namespace SimplePvECollision
 
             //Setting screen size and making the mouse pointer visible.
             IsMouseVisible = true;
-            graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
-            graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+            graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width / 4 * 3;
+            graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height / 4 * 3;
         }
 
         protected override void Initialize()
@@ -42,7 +42,7 @@ namespace SimplePvECollision
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-
+            ColliderManager.Update();
             base.Update(gameTime);
         }
 
@@ -50,6 +50,7 @@ namespace SimplePvECollision
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
+            ColliderManager.Draw(spriteBatch);
             base.Draw(gameTime);
         }
     }

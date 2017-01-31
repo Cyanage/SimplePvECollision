@@ -122,7 +122,7 @@ namespace SimplePvECollision
             }
         }
 
-        public static void Draw(SpriteBatch spriteBatch, GraphicsDeviceManager graphics) // draws all the textures in the collider lists.
+        public static void Draw(SpriteBatch spriteBatch) // draws all the textures in the collider lists.
         {
             spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Matrix.CreateTranslation(-playerCollider.ObjectRect.X + 320, -playerCollider.ObjectRect.Y + 256, 0)); //TODO: make camera values middle of screen.
             foreach (ICollider col in enviromentColliderList)
